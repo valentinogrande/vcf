@@ -1,0 +1,13 @@
+[package]
+name = "vcf"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+[profile.release]
+opt-level = 3     # full optimizations
+lto = "fat"       # link-time optimization across the whole crate graph
+codegen-units = 1 # one codegen unit -> better inlining, slower compile
+panic = "abort"   # no unwinding tables; smaller, slightly faster
+strip = true      # strip symbols from the final binary
